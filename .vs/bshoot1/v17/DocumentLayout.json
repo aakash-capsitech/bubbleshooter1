@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|c:\\users\\ct_user\\desktop\\tasks\\bshoot1\\assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\bubblespawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bubblespawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|c:\\users\\ct_user\\desktop\\tasks\\bshoot1\\assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\bubble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -42,41 +42,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "BubbleSpawnManager.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\BubbleSpawnManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BubbleSpawnManager.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\BubbleSpawnManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\BubbleSpawnManager.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAUwLQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAIwGcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T12:31:09.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Shooter.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\Shooter.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Shooter.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\Shooter.cs",
               "RelativeToolTip": "Assets\\Scripts\\Shooter.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAA9wFkAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T12:04:49.989Z"
+              "WhenOpened": "2025-10-07T12:04:49.989Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ShooterManager.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\ShooterManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ShooterManager.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\ShooterManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\ShooterManager.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAACwAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAADoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T11:52:26.485Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-07T11:52:26.485Z"
             }
           ]
         }

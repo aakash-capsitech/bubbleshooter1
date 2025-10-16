@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI.Table;
 
 [ExecuteInEditMode]
@@ -17,6 +19,8 @@ public class BubbleSpawnManager : MonoBehaviour
     public int score;
     public TextMeshProUGUI sc;
     public TextMeshProUGUI game;
+    public Button restart;
+    public Image GameO;
     //public GameObject game;
 
     Bubble[,] grid;
@@ -97,7 +101,7 @@ public class BubbleSpawnManager : MonoBehaviour
         float x = (col -4) * horizontalSpacing;
         if (((row - 40) & 1) == 0) x += horizontalSpacing / 2f;
         float y = -(row - 40) * verticalSpacing;
-        return new Vector3(x, y, 0);
+        return new Vector3(x+0.2f, y, 0);
     }
 
     public void rearrangeGrid()
@@ -178,9 +182,12 @@ public class BubbleSpawnManager : MonoBehaviour
                     grid[i, j] = null;
                 }
             }
-        }
+        }     
         //Debug.Log("Game Over");
         game.gameObject.SetActive(true);
+        restart.gameObject.SetActive(true);
+        GameO.gameObject.SetActive(true);
+
     }
 
     List<(int, int)> FindChildren(int row, int col)
@@ -400,5 +407,10 @@ public class BubbleSpawnManager : MonoBehaviour
     {
         score += scr;
         sc.text = "Score: " + score.ToString();
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

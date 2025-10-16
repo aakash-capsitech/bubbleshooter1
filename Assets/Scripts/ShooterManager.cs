@@ -22,7 +22,7 @@ public class ShooterManager : MonoBehaviour
 
     private void Start()
     {
-        shooters = new GameObject[6];
+        shooters = new GameObject[3];
         GenerateShooters();
     }
 
@@ -35,7 +35,7 @@ public class ShooterManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - i -1)/1.5f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
+            GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - i)/1.2f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
             shooters[i] = ns;
             rb2d = ns.GetComponent<Rigidbody2D>();
             rb2d.bodyType = RigidbodyType2D.Static;
@@ -44,18 +44,25 @@ public class ShooterManager : MonoBehaviour
             sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
             sr.color = Color.white;
         }
+        GameObject nso = Instantiate(shooterPrefab,transform.position, shooterPrefab.transform.rotation);
+        rb2d = nso.GetComponent<Rigidbody2D>();
+        rb2d.bodyType = RigidbodyType2D.Static;
+        nso.transform.localScale = Vector3.one * (bubbleRadius * 0.80f);
+        SpriteRenderer sro = nso.GetComponent<SpriteRenderer>();
+        sro.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
+        sro.color = Color.white;
     }
 
     private void GenerateShooter()
     {
-        for (int i = 1; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
-            shooters[i - 1] = shooters[i];
-            GameObject og = shooters[i-1];
+            shooters[i] = shooters[i+1];
+            GameObject og = shooters[i];
 
-            og.transform.position = new Vector3((shooterOrigin.x - i-1 - 1) / 1.5f, shooterOrigin.y, shooterOrigin.z);
+            og.transform.position = new Vector3((shooterOrigin.x - i - 1) / 1.2f, shooterOrigin.y, shooterOrigin.z);
         }
-        GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - 2 - 1) / 1.5f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
+        GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - 2 - 1) / 1.2f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
         shooters[2] = ns;
         rb2d = ns.GetComponent<Rigidbody2D>();
         rb2d.bodyType = RigidbodyType2D.Static;
@@ -85,6 +92,17 @@ public class ShooterManager : MonoBehaviour
             Debug.Log(shooterOrigin);
             GenerateShooter();
         }
+    }
+
+    public void actualShooter()
+    {
+        GameObject ns = Instantiate(shooterPrefab, shooterOrigin, shooterPrefab.transform.rotation);
+        rb2d = ns.GetComponent<Rigidbody2D>();
+        rb2d.bodyType = RigidbodyType2D.Static;
+        ns.transform.localScale = Vector3.one * (bubbleRadius * 0.80f);
+        SpriteRenderer sr = ns.GetComponent<SpriteRenderer>();
+        sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
+        sr.color = Color.white;
     }
 
     public void helpShot()
