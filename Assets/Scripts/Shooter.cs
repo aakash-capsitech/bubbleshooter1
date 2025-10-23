@@ -85,10 +85,12 @@ public class Shooter : MonoBehaviour
         int destroyed = gridManager.DestroySimilar2(sr, snappedCell.x, snappedCell.y);
         if (destroyed > 0)
         {
+            Debug.Log("dbkkjfnvkdjfnv" + destroyed);
             int row = snappedCell.x;
             int col = snappedCell.y;
             gridManager.DestroySelf(row, col);
         }
+        gridManager.ClearHanging();
     }
 
 }

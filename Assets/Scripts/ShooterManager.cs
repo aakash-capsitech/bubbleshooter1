@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ShooterManager : MonoBehaviour
 {
-    //public GameObject actualShooter;
     public GameObject shooterPrefab;
     public float shootForce = 10f;
     public GameObject bubblePrefab;
@@ -37,7 +36,7 @@ public class ShooterManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - i)/1.2f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
+            GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - i) / 1.2f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
             shooters[i] = ns;
             rb2d = ns.GetComponent<Rigidbody2D>();
             rb2d.bodyType = RigidbodyType2D.Static;
@@ -45,17 +44,7 @@ public class ShooterManager : MonoBehaviour
             SpriteRenderer sr = ns.GetComponent<SpriteRenderer>();
             sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
             sr.color = Color.white;
-            //toggleInputs(ns, false);
         }
-        GameObject nso = Instantiate(shooterPrefab,transform.position, shooterPrefab.transform.rotation);
-        rb2d = nso.GetComponent<Rigidbody2D>();
-        rb2d.bodyType = RigidbodyType2D.Static;
-        nso.transform.localScale = Vector3.one * (bubbleRadius * 0.80f);
-        SpriteRenderer sro = nso.GetComponent<SpriteRenderer>();
-        sro.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
-        sro.color = Color.white;
-        //nso.GetComponent<Shooter>().enabled = true;
-        //toggleInputs(nso, true);
     }
 
     private void GenerateShooter()
@@ -66,8 +55,6 @@ public class ShooterManager : MonoBehaviour
             GameObject og = shooters[i];
 
             og.transform.position = new Vector3((shooterOrigin.x - i - 1) / 1.2f, shooterOrigin.y, shooterOrigin.z);
-            //og.GetComponent<Shooter>().enabled = true;
-            //toggleInputs(og, true);
         }
         GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - 2 - 1) / 1.2f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
         shooters[2] = ns;
@@ -77,21 +64,6 @@ public class ShooterManager : MonoBehaviour
         SpriteRenderer sr = ns.GetComponent<SpriteRenderer>();
         sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
         sr.color = Color.white;
-        //toggleInputs(ns, false);
-    }
-
-    private void toggleInputs(GameObject shooter, bool isActive)
-    {
-        Shooter s = shooter.GetComponent<Shooter>();
-        if (s != null)
-        {
-            s.enabled = false;
-        }
-        Collider2D col = shooter.GetComponent<Collider2D>();
-        if(col != null)
-        {
-            col.enabled = isActive;
-        }
     }
 
     public void helpShot2()
@@ -113,10 +85,9 @@ public class ShooterManager : MonoBehaviour
             if(og != null)
             {
                 og.transform.position = shooterOrigin;
-                og.GetComponent<Shooter>().enabled = true;
+                og.GetComponent<CircleCollider2D>().enabled = true;
                 GenerateShooter();
             }
-
         }
     }
 }

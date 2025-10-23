@@ -289,7 +289,7 @@ public class BubbleSpawnManager : MonoBehaviour
         {
             //Debug.Log($"Only {connected.Count} connected — no destruction.");
         }
-        ClearHanging();
+        //ClearHanging();
         return destroyed;
     }
 
