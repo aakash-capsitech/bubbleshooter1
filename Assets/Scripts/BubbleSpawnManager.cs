@@ -27,13 +27,27 @@ public class BubbleSpawnManager : MonoBehaviour
 
     void Awake()
     {
-        GenerateGrid();
+        //GenerateGrid();
     }
 
     private void Start()
     {
         score = 0;
         sc.text = "Score: " + score.ToString();
+
+
+        Camera cam = Camera.main;
+        Vector3 left = cam.ScreenToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+        Vector3 right = cam.ScreenToWorldPoint(new Vector3(Screen.width, 0, cam.nearClipPlane));
+
+        float worldWidth = right.x - left.x;
+
+        cols = Mathf.FloorToInt(worldWidth / (bubbleRadius*2));
+
+        GenerateGrid();
+
+        Debug.Log("Screen Width in World Units: " + worldWidth);
+        Debug.Log("Columns that fit: " + cols);
     }
 
     public void DestroySelf(int i, int j)
@@ -98,10 +112,10 @@ public class BubbleSpawnManager : MonoBehaviour
 
     public Vector3 GridToWorld(int row, int col)
     {
-        float x = (col -4) * horizontalSpacing;
+        float x = (col -(cols/2)) * horizontalSpacing;
         if (((row - 40) & 1) == 0) x += horizontalSpacing / 2f;
         float y = -(row - 40) * verticalSpacing;
-        return new Vector3(x+0.2f, y, 0);
+        return new Vector3(x, y, 0);
     }
 
     public void rearrangeGrid()

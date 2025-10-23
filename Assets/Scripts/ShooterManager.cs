@@ -1,12 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class ShooterManager : MonoBehaviour
 {
+    //public GameObject actualShooter;
     public GameObject shooterPrefab;
     public float shootForce = 10f;
     public GameObject bubblePrefab;
-    public bool hasShot = true;
+    public bool hasShot = false;
     private Vector3 shooterOrigin = new Vector3(0, -4, 0);
     private float bubbleRadius = 0.30f;
     public BubbleSpawnManager bubbleSpawnManager;
@@ -43,6 +45,7 @@ public class ShooterManager : MonoBehaviour
             SpriteRenderer sr = ns.GetComponent<SpriteRenderer>();
             sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
             sr.color = Color.white;
+            //toggleInputs(ns, false);
         }
         GameObject nso = Instantiate(shooterPrefab,transform.position, shooterPrefab.transform.rotation);
         rb2d = nso.GetComponent<Rigidbody2D>();
@@ -51,6 +54,8 @@ public class ShooterManager : MonoBehaviour
         SpriteRenderer sro = nso.GetComponent<SpriteRenderer>();
         sro.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
         sro.color = Color.white;
+        //nso.GetComponent<Shooter>().enabled = true;
+        //toggleInputs(nso, true);
     }
 
     private void GenerateShooter()
@@ -61,6 +66,8 @@ public class ShooterManager : MonoBehaviour
             GameObject og = shooters[i];
 
             og.transform.position = new Vector3((shooterOrigin.x - i - 1) / 1.2f, shooterOrigin.y, shooterOrigin.z);
+            //og.GetComponent<Shooter>().enabled = true;
+            //toggleInputs(og, true);
         }
         GameObject ns = Instantiate(shooterPrefab, new Vector3((shooterOrigin.x - 2 - 1) / 1.2f, shooterOrigin.y, shooterOrigin.z), shooterPrefab.transform.rotation);
         shooters[2] = ns;
@@ -70,6 +77,21 @@ public class ShooterManager : MonoBehaviour
         SpriteRenderer sr = ns.GetComponent<SpriteRenderer>();
         sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
         sr.color = Color.white;
+        //toggleInputs(ns, false);
+    }
+
+    private void toggleInputs(GameObject shooter, bool isActive)
+    {
+        Shooter s = shooter.GetComponent<Shooter>();
+        if (s != null)
+        {
+            s.enabled = false;
+        }
+        Collider2D col = shooter.GetComponent<Collider2D>();
+        if(col != null)
+        {
+            col.enabled = isActive;
+        }
     }
 
     public void helpShot2()
@@ -88,43 +110,13 @@ public class ShooterManager : MonoBehaviour
 
             GameObject og = shooters[0];
 
-            og.transform.position = shooterOrigin;
-            Debug.Log(shooterOrigin);
-            GenerateShooter();
-        }
-    }
-
-    public void actualShooter()
-    {
-        GameObject ns = Instantiate(shooterPrefab, shooterOrigin, shooterPrefab.transform.rotation);
-        rb2d = ns.GetComponent<Rigidbody2D>();
-        rb2d.bodyType = RigidbodyType2D.Static;
-        ns.transform.localScale = Vector3.one * (bubbleRadius * 0.80f);
-        SpriteRenderer sr = ns.GetComponent<SpriteRenderer>();
-        sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
-        sr.color = Color.white;
-    }
-
-    public void helpShot()
-    {
-        if (hasShot)
-        {
-            //GenerateShooter();
-            shoots++;
-            int rs = Random.Range(0, 20);
-            if (rs >= 10 && shoots >= 7)
+            if(og != null)
             {
-                shoots = 0;
-                bubbleSpawnManager.rearrangeGrid();
+                og.transform.position = shooterOrigin;
+                og.GetComponent<Shooter>().enabled = true;
+                GenerateShooter();
             }
-            hasShot = false;
-            GameObject ns = Instantiate(shooterPrefab, shooterOrigin, shooterPrefab.transform.rotation);
-            rb2d = ns.GetComponent<Rigidbody2D>();
-            rb2d.bodyType = RigidbodyType2D.Static;
-            ns.transform.localScale = Vector3.one * (bubbleRadius * 0.80f);
-            SpriteRenderer sr = ns.GetComponent<SpriteRenderer>();
-            sr.sprite = shooterSprites[Random.Range(0, shooterSprites.Length)];
-            sr.color = Color.white;
+
         }
     }
 }
