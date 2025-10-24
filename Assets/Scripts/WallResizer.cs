@@ -21,9 +21,9 @@ public class WallResizer : MonoBehaviour
 
     void Update()
     {
-        #if UNITY_EDITOR
-                PositionWalls();
-        #endif
+#if UNITY_EDITOR
+        PositionWalls();
+#endif
     }
 
     void PositionWalls()

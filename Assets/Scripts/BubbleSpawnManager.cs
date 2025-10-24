@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -42,7 +42,7 @@ public class BubbleSpawnManager : MonoBehaviour
 
         float worldWidth = right.x - left.x;
 
-        cols = Mathf.FloorToInt(worldWidth / (bubbleRadius*2));
+        cols = Mathf.FloorToInt(worldWidth / (bubbleRadius * 2));
 
         GenerateGrid();
 
@@ -69,7 +69,7 @@ public class BubbleSpawnManager : MonoBehaviour
         verticalSpacing = bubbleRadius * 2f;
         grid = new Bubble[rows, cols];
 
-        for (int r = 0; r < rows-10; r++)
+        for (int r = 0; r < rows - 10; r++)
         {
             for (int c = 0; c < cols; c++)
             {
@@ -88,11 +88,11 @@ public class BubbleSpawnManager : MonoBehaviour
                 }
             }
         }
-        for(int i=0; i<cols;i++)
+        for (int i = 0; i < cols; i++)
         {
-            if (grid[0,i] != null)
+            if (grid[0, i] != null)
             {
-                Bubble b = grid[0,i];
+                Bubble b = grid[0, i];
                 SpriteRenderer ss = b.GetComponentInParent<SpriteRenderer>();
                 SpriteRenderer ss2 = b.GetComponent<SpriteRenderer>();
             }
@@ -110,26 +110,42 @@ public class BubbleSpawnManager : MonoBehaviour
         }
     }
 
-    public Vector3 GridToWorld(int row, int col)
+    public Vector3 GridToWorld2(int row, int col)
     {
-        float x = (col -(cols/2)) * horizontalSpacing;
+        float x = (col - (cols / 2)) * horizontalSpacing;
         if (((row - 40) & 1) == 0) x += horizontalSpacing / 2f;
         float y = -(row - 40) * verticalSpacing;
         return new Vector3(x, y, 0);
     }
 
+    public Vector3 GridToWorld(int row, int col)
+    {
+        bool shifted = (((row - 40) & 1) == 0);
+
+        float rowStartOffset = shifted ? horizontalSpacing * 0.5f : 0f;
+
+        float rowWidth = (cols - 1) * horizontalSpacing + rowStartOffset;
+
+        float x = col * horizontalSpacing + rowStartOffset - rowWidth * 0.5f;
+
+        float y = -(row - 40) * verticalSpacing;
+
+        return new Vector3(x, y, 0f);
+    }
+
+
     public void rearrangeGrid()
-    {             
-        for(int i=rows-1; i>0; i--)
+    {
+        for (int i = rows - 1; i > 0; i--)
         {
-            for(int j=0; j<cols; j++)
+            for (int j = 0; j < cols; j++)
             {
                 Vector3 pos = GridToWorld(i, j);
-                if (grid[i-1, j] == null) continue;
-                Bubble bubble = grid[i-1, j];
+                if (grid[i - 1, j] == null) continue;
+                Bubble bubble = grid[i - 1, j];
                 bubble.transform.position = pos;
                 grid[i, j] = bubble;
-                grid[i-1, j] = null;
+                grid[i - 1, j] = null;
             }
         }
     }
@@ -145,7 +161,7 @@ public class BubbleSpawnManager : MonoBehaviour
             {
                 Vector3 gridPos = GridToWorld(r, c);
                 float dist = Vector3.Distance(worldPos, gridPos);
-                if (dist < minDist && grid[r,c] == null)
+                if (dist < minDist && grid[r, c] == null)
                 {
                     minDist = dist;
                     closestRow = r;
@@ -170,11 +186,11 @@ public class BubbleSpawnManager : MonoBehaviour
     void GameOver()
     {
         bool dest = false;
-        for(int i = rows-1; i >= 0; i--)
+        for (int i = rows - 1; i >= 0; i--)
         {
-            for(int  j = 0; j< cols; j++)
+            for (int j = 0; j < cols; j++)
             {
-                if (grid[i,j] != null && i>=43)
+                if (grid[i, j] != null && i >= 43)
                 {
                     dest = true;
                     break;
@@ -185,18 +201,18 @@ public class BubbleSpawnManager : MonoBehaviour
         {
             return;
         }
-        for(int i = rows-1;i >= 0;i--)
+        for (int i = rows - 1; i >= 0; i--)
         {
-            for(int j = 0;j< cols; j++)
+            for (int j = 0; j < cols; j++)
             {
-                if(grid[i,j] != null)
+                if (grid[i, j] != null)
                 {
                     Destroy(grid[i, j].gameObject);
 
                     grid[i, j] = null;
                 }
             }
-        }     
+        }
         //Debug.Log("Game Over");
         game.gameObject.SetActive(true);
         restart.gameObject.SetActive(true);
@@ -257,7 +273,7 @@ public class BubbleSpawnManager : MonoBehaviour
         }
         else
         {
-            //Debug.Log($"Only {connected.Count} connected — no destruction.");
+            //Debug.Log($"Only {connected.Count} connected ï¿½ no destruction.");
         }
         ClearHanging();
     }
@@ -287,7 +303,7 @@ public class BubbleSpawnManager : MonoBehaviour
         }
         else
         {
-            //Debug.Log($"Only {connected.Count} connected — no destruction.");
+            //Debug.Log($"Only {connected.Count} connected ï¿½ no destruction.");
         }
         //ClearHanging();
         return destroyed;
@@ -344,18 +360,18 @@ public class BubbleSpawnManager : MonoBehaviour
 
         int fr = 0;
 
-        for(int i = 0;  i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             bool found = false;
-            for(int j = 0; j < m; j++)
+            for (int j = 0; j < m; j++)
             {
-                if(grid[i, j] != null)
+                if (grid[i, j] != null)
                 {
                     found = true;
                     break;
                 }
             }
-            if(found == true)
+            if (found == true)
             {
                 fr = i;
                 break;

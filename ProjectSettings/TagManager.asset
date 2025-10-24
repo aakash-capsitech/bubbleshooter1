@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bubble
   - Shooter
+  - ogshooter
   layers:
   - Default
   - TransparentFX

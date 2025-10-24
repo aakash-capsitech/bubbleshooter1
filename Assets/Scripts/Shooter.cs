@@ -6,7 +6,7 @@ public class Shooter : MonoBehaviour
     public GameObject shooterPrefab;
     public float shootForce = 10f;
     private Vector3 aimDirection;
-    private bool isAiming = false;
+    private bool isAiming = true;
     LineRenderer line;
     public GameObject bubblePrefab;
     private Vector3 shooterOrigin = new Vector3(0, -4, 0);
@@ -24,28 +24,95 @@ public class Shooter : MonoBehaviour
         BSM = FindFirstObjectByType<BubbleSpawnManager>();
     }
 
+    private void Start()
+    {
+        line.enabled = true;
+    }
+
+    private void Update()
+    {
+        if (!isAiming) return;
+        line.enabled = true;
+
+
+        Vector3 mousePos2 = Input.mousePosition;
+
+        bool isMouseOutsideScreen = mousePos2.x < 0 || mousePos2.x > Screen.width ||
+                                    mousePos2.y < 0 || mousePos2.y > Screen.height;
+
+        if (isMouseOutsideScreen)
+        {
+            return;
+        }
+
+        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //mousePos.z = 0;
+        //aimDirection = (mousePos - shooterOrigin).normalized;
+        //Debug.DrawLine(shooterOrigin, shooterOrigin + aimDirection * 2, Color.green);
+        //line.SetPosition(0, shooterOrigin);
+        //line.SetPosition(1, shooterOrigin + aimDirection * 2f);
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
+        aimDirection = (mousePos - shooterOrigin).normalized;
+
+        if (aimDirection.y < 0f)
+        {
+            aimDirection.y = 0f;
+            aimDirection = aimDirection.normalized;
+        }
+
+        float maxAngle = 60f;
+        float angleFromUp = Vector3.Angle(Vector3.up, aimDirection);
+        if (angleFromUp > maxAngle)
+        {
+            float sign = Mathf.Sign(aimDirection.x);
+            float rad = maxAngle * Mathf.Deg2Rad;
+            aimDirection = new Vector3(Mathf.Sin(rad) * sign, Mathf.Cos(rad), 0f).normalized;
+        }
+
+        Debug.DrawLine(shooterOrigin, shooterOrigin + aimDirection * 2, Color.green);
+        line.SetPosition(0, shooterOrigin);
+        line.SetPosition(1, shooterOrigin + aimDirection * 2f);
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject playerObject = GameObject.FindGameObjectWithTag("ogshooter");
+            //Destroy(playerObject);
+            //playerObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            //GameObject newBubble = Instantiate(shooterPrefab, shooterOrigin, Quaternion.identity);
+            //Rigidbody2D rb = newBubble.GetComponent<Rigidbody2D>();
+            Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.linearVelocity = aimDirection * shootForce;
+            
+        }
+    }
+
     void OnMouseDown()
     {
         isAiming = true;
     }
 
-    void OnMouseDrag()
-    {
-        if (!isAiming) return;
-        line.enabled = true;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        aimDirection = (mousePos - shooterOrigin).normalized;
-        Debug.DrawLine(shooterOrigin, shooterOrigin + aimDirection * 2, Color.green);
-        line.SetPosition(0, shooterOrigin);
-        line.SetPosition(1, shooterOrigin + aimDirection * 2f);
-    }
+    //void OnMouseDrag()
+    //{
+    //    if (!isAiming) return;
+    //    line.enabled = true;
+    //    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    mousePos.z = 0;
+    //    aimDirection = (mousePos - shooterOrigin).normalized;
+    //    Debug.DrawLine(shooterOrigin, shooterOrigin + aimDirection * 2, Color.green);
+    //    line.SetPosition(0, shooterOrigin);
+    //    line.SetPosition(1, shooterOrigin + aimDirection * 2f);
+    //}
 
     void OnMouseUp()
     {
         if (!isAiming) return;
-        line.enabled = false;
-        isAiming = false;
+        //line.enabled = false;
+        //isAiming = false;
         gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         GameObject newBubble = Instantiate(shooterPrefab, shooterOrigin, Quaternion.identity);
         Rigidbody2D rb = newBubble.GetComponent<Rigidbody2D>();

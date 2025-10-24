@@ -171,4 +171,3 @@ MonoBehaviour:
   row: 0
   col: 0
   spriteRenderer: {fileID: 0}
-  particles: {fileID: 5929256062146896772, guid: 6d7dbcc4500484c4697f9725890ce144, type: 3}

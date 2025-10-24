@@ -15,6 +15,7 @@ public class ShooterManager : MonoBehaviour
     public static int shoots = 0;
     public Sprite[] shooterSprites;
     private GameObject[] shooters;
+    private int downCount = 0;
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class ShooterManager : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            shooters[i] = shooters[i+1];
+            shooters[i] = shooters[i + 1];
             GameObject og = shooters[i];
 
             og.transform.position = new Vector3((shooterOrigin.x - i - 1) / 1.2f, shooterOrigin.y, shooterOrigin.z);
@@ -70,22 +71,29 @@ public class ShooterManager : MonoBehaviour
     {
         if (hasShot)
         {
-            
+
             shoots++;
-            int rs = Random.Range(0, 20);
-            if (rs >= 10 && shoots >= 7)
+            //int rs = Random.Range(0, 20);
+            //if (rs >= 10 && shoots >= 7)
+            //{
+            //    shoots = 0;
+            //    bubbleSpawnManager.rearrangeGrid();
+            //}
+
+            if(bubbleSpawnManager.score / 30 > downCount)
             {
-                shoots = 0;
                 bubbleSpawnManager.rearrangeGrid();
+                downCount = bubbleSpawnManager.score / 30;
             }
             hasShot = false;
 
             GameObject og = shooters[0];
 
-            if(og != null)
+            if (og != null)
             {
                 og.transform.position = shooterOrigin;
                 og.GetComponent<CircleCollider2D>().enabled = true;
+                og.tag = "ogshooter";
                 GenerateShooter();
             }
         }
