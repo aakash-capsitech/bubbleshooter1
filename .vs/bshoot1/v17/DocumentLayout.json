@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|c:\\users\\ct_user\\desktop\\tasks\\bshoot1\\assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\bubblespawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bubblespawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|c:\\users\\ct_user\\desktop\\tasks\\bshoot1\\assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shootermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\bubble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bubble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\wallresizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wallresizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\bubble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bubble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1B34F930-56A3-3AD6-28B3-AB617301032F}|Assembly-CSharp.csproj|C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\assets\\scripts\\exitbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -44,27 +44,27 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\ExitButton.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\ExitButton.cs",
               "RelativeToolTip": "Assets\\Scripts\\ExitButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-24T05:13:02.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "WallResizer.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\WallResizer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WallResizer.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\WallResizer.cs",
               "RelativeToolTip": "Assets\\Scripts\\WallResizer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-17T05:46:09.545Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Bubble.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\Bubble.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Bubble.cs",
@@ -77,39 +77,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "BubbleSpawnManager.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\BubbleSpawnManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BubbleSpawnManager.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\BubbleSpawnManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\BubbleSpawnManager.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAowIEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAI4BAAAAAAAAAAAgwJUBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T12:31:09.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Shooter.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\Shooter.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Shooter.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\Shooter.cs",
               "RelativeToolTip": "Assets\\Scripts\\Shooter.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAwwEkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBcAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T12:04:49.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ShooterManager.cs",
               "DocumentMoniker": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\ShooterManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ShooterManager.cs",
               "ToolTip": "C:\\Users\\CT_USER\\Desktop\\tasks\\bshoot1\\Assets\\Scripts\\ShooterManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\ShooterManager.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwEUAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwEkAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T11:52:26.485Z",
               "EditorCaption": ""

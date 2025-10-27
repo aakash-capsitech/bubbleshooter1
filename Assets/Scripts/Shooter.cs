@@ -45,13 +45,6 @@ public class Shooter : MonoBehaviour
             return;
         }
 
-        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //mousePos.z = 0;
-        //aimDirection = (mousePos - shooterOrigin).normalized;
-        //Debug.DrawLine(shooterOrigin, shooterOrigin + aimDirection * 2, Color.green);
-        //line.SetPosition(0, shooterOrigin);
-        //line.SetPosition(1, shooterOrigin + aimDirection * 2f);
-
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
 
@@ -80,10 +73,6 @@ public class Shooter : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("ogshooter");
-            //Destroy(playerObject);
-            //playerObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            //GameObject newBubble = Instantiate(shooterPrefab, shooterOrigin, Quaternion.identity);
-            //Rigidbody2D rb = newBubble.GetComponent<Rigidbody2D>();
             Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.linearVelocity = aimDirection * shootForce;
@@ -96,32 +85,10 @@ public class Shooter : MonoBehaviour
         isAiming = true;
     }
 
-    //void OnMouseDrag()
-    //{
-    //    if (!isAiming) return;
-    //    line.enabled = true;
-    //    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    mousePos.z = 0;
-    //    aimDirection = (mousePos - shooterOrigin).normalized;
-    //    Debug.DrawLine(shooterOrigin, shooterOrigin + aimDirection * 2, Color.green);
-    //    line.SetPosition(0, shooterOrigin);
-    //    line.SetPosition(1, shooterOrigin + aimDirection * 2f);
-    //}
-
-    void OnMouseUp()
-    {
-        if (!isAiming) return;
-        //line.enabled = false;
-        //isAiming = false;
-        gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        GameObject newBubble = Instantiate(shooterPrefab, shooterOrigin, Quaternion.identity);
-        Rigidbody2D rb = newBubble.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = aimDirection * shootForce;
-        Destroy(gameObject);
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bubble") || collision.gameObject.CompareTag("Shooter"))
+        if (sManager.hasShot) return;
+        if (collision.gameObject.CompareTag("Bubble"))
         {
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             ConvertToBubble();
@@ -143,19 +110,15 @@ public class Shooter : MonoBehaviour
 
         SpriteRenderer sr = b.GetComponent<SpriteRenderer>();
         sr.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
-        //Debug.Log(sr.sprite);
         sr.color = Color.white;
 
         gridManager.assignToMatrix(b, snappedCell.x, snappedCell.y);
 
-        //gridManager.DestroySimilar(sr, snappedCell.x, snappedCell.y);
-        int destroyed = gridManager.DestroySimilar2(sr, snappedCell.x, snappedCell.y);
+        int destroyed = gridManager.DestroySimilar2(b.GetComponent<SpriteRenderer>(), snappedCell.x, snappedCell.y);
         if (destroyed > 0)
         {
-            Debug.Log("dbkkjfnvkdjfnv" + destroyed);
             int row = snappedCell.x;
             int col = snappedCell.y;
-            gridManager.DestroySelf(row, col);
         }
         gridManager.ClearHanging();
     }

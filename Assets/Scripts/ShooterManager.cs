@@ -71,19 +71,10 @@ public class ShooterManager : MonoBehaviour
     {
         if (hasShot)
         {
-
-            shoots++;
-            //int rs = Random.Range(0, 20);
-            //if (rs >= 10 && shoots >= 7)
-            //{
-            //    shoots = 0;
-            //    bubbleSpawnManager.rearrangeGrid();
-            //}
-
-            if(bubbleSpawnManager.score / 30 > downCount)
+            if(bubbleSpawnManager.score / 50 > downCount)
             {
                 bubbleSpawnManager.rearrangeGrid();
-                downCount = bubbleSpawnManager.score / 30;
+                downCount = bubbleSpawnManager.score / 50;
             }
             hasShot = false;
 

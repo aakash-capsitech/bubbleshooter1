@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,11 +18,13 @@ public class BubbleSpawnManager : MonoBehaviour
     float horizontalSpacing;
     float verticalSpacing;
     public GameObject particles;
+    public GameObject explosions;
     public int score;
     public TextMeshProUGUI sc;
     public TextMeshProUGUI game;
     public Button restart;
     public Image GameO;
+    public AudioSource bubbleSound;
     //public GameObject game;
 
     Bubble[,] grid;
@@ -48,16 +52,6 @@ public class BubbleSpawnManager : MonoBehaviour
 
         Debug.Log("Screen Width in World Units: " + worldWidth);
         Debug.Log("Columns that fit: " + cols);
-    }
-
-    public void DestroySelf(int i, int j)
-    {
-        if (grid[i, j] != null)
-        {
-            Destroy(grid[i, j].gameObject);
-
-            grid[i, j] = null;
-        }
     }
 
     void GenerateGrid()
@@ -122,11 +116,11 @@ public class BubbleSpawnManager : MonoBehaviour
     {
         bool shifted = (((row - 40) & 1) == 0);
 
-        float rowStartOffset = shifted ? horizontalSpacing * 0.5f : 0f;
+        float rowStartOffset = shifted ? horizontalSpacing * 0.85f : 0f; // it was 0.5, if something breaks, i need to change it back
 
         float rowWidth = (cols - 1) * horizontalSpacing + rowStartOffset;
 
-        float x = col * horizontalSpacing + rowStartOffset - rowWidth * 0.5f;
+        float x = col * horizontalSpacing + rowStartOffset - rowWidth * 0.52f; // it was 0.5 
 
         float y = -(row - 40) * verticalSpacing;
 
@@ -267,6 +261,7 @@ public class BubbleSpawnManager : MonoBehaviour
                     IncrementScore(3);
 
                     Instantiate(particles, GridToWorld(row, col), particles.transform.rotation);
+                    Instantiate(explosions, GridToWorld(row, col), explosions.transform.rotation);
                     grid[row, col] = null;
                 }
             }
@@ -297,6 +292,9 @@ public class BubbleSpawnManager : MonoBehaviour
                     IncrementScore(3);
 
                     Instantiate(particles, GridToWorld(row, col), particles.transform.rotation);
+                    Instantiate(explosions, GridToWorld(row, col), explosions.transform.rotation);
+                    bubbleSound.Play();
+                    Handheld.Vibrate();
                     grid[row, col] = null;
                 }
             }
